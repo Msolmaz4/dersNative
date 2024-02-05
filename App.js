@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Alert, Button, Image, StyleSheet, Text, View } from 'react-native';
-
+import { AntDesign } from '@expo/vector-icons';
 export default function App() {
   const [count, setCount] = useState(0)
 
@@ -31,6 +31,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text>Odwemeke</Text>
+      <AntDesign name="stepbackward" size={24} color="black" style={{zIndex:23}}/>
       <StatusBar style="auto" />
       <View style={{ width: 40, height: 150 }}>
         <Image style={{ width: 100, height: 100 }} source={require("./assets/indir.jpg")} />{/* biurda assets resmi  */}
@@ -46,16 +47,22 @@ export default function App() {
       <Text style={styles.bold}>adamsin</Text>
       {/* burda ikinci bir style varsa arqay icinde yaopatiy */}
       <Text style={[styles.bold,{fontSize:24}]}>kimsin</Text>
+      {/* flexbox  burda bir verirsen tamamni kaplar ama hepsine bir verrisen arainda esit bolusulur*/}
+     <View style={{width:350,height:500,backgroundColor:"#3960EB"}}>
+      <View style={{backgroundColor:"#C8ADC0",flex:2}}></View>
+      <View style={{backgroundColor:"##080708",flex:1}}></View>
+      <View style={{backgroundColor:"#EDD3C4",flex:1}}></View>
+     </View>
+     
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+ 
     backgroundColor: '#CBCBD4',
-    alignItems: 'center',
-    justifyContent: 'center',
+ 
   },
   bold:{
     color:"blue"
