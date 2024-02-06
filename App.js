@@ -1,9 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Alert, Button, Image, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, Image, Keyboard, Modal, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 export default function App() {
   const [count, setCount] = useState(0)
+  const [mod,setMod] = useState(false)
 
   const alertMe = () => {
     // alert("dert") burda sade ama icini duyenlemek icin altaki kofyu yapariy
@@ -48,12 +49,41 @@ export default function App() {
       {/* burda ikinci bir style varsa arqay icinde yaopatiy */}
       <Text style={[styles.bold,{fontSize:24}]}>kimsin</Text>
       {/* flexbox  burda bir verirsen tamamni kaplar ama hepsine bir verrisen arainda esit bolusulur*/}
-     <View style={{width:350,height:500,backgroundColor:"#3960EB"}}>
+     {/* <View style={{width:350,height:500,backgroundColor:"#3960EB"}}>
       <View style={{backgroundColor:"#C8ADC0",flex:2}}></View>
       <View style={{backgroundColor:"##080708",flex:1}}></View>
       <View style={{backgroundColor:"#EDD3C4",flex:1}}></View>
-     </View>
+     </View> */}
+     {/* inputMode:"decimal" bu sayi cikartir */}
      
+     <TextInput placeholder='deneme' multiline inputMode='text' value='' onChangeText={()=>{}}   style={{width:200,height:20, borderWidth:2}}/>
+     {/* burada mod degidkeni ile modal kintrol ettik */}
+     <Button title='Modal' onPress={()=>setMod(prev=>!prev)}></Button>
+     <Modal visible={mod}>
+      <Text>derkepeme</Text>
+      <Button title='kapat' onPress={()=>setMod(prev=>!prev)}></Button>
+      
+     </Modal> 
+  {/* burda tiklandifinad birefej vermiyor burda bir inout lavyre acyik ama bosta bir yerde ytiklayinca kapatacagiy kapsayisina vermek gerekir*/}
+  <TouchableWithoutFeedback onPress={()=>{
+      Keyboard.dismiss()
+     }}>
+      <TextInput placeholder='enter'/>
+
+     </TouchableWithoutFeedback>
+
+
+     <TouchableOpacity 
+     onPress={()=>console.log("dokundukca saydamlik katara")}
+     onPressOut={()=>{}}
+    
+     >
+      <View style={{width:10,height:25,backgroundColor:"black"}}>
+        
+
+      </View>
+     </TouchableOpacity>
+   
     </View>
   );
 }
